@@ -1,0 +1,35 @@
+## MySQL settings
+## The name of the database for WordPress
+DB_NAME: ''
+## MySQL database username
+DB_USER: ''
+## MySQL database password
+DB_PASSWORD: ''
+## MySQL hostname
+DB_HOST: 'localhost'
+## Database Charset to use in creating database tables
+DB_CHARSET: 'utf8mb4'
+## The Database Collate type
+DB_COLLATE: ''
+
+## Authentication Unique Keys and Salts
+## https://api.wordpress.org/secret-key/1.1/salt/
+AUTH_KEY:           'V%E[ikY;rd.?Z-;@$DNPZg(>x(q3*QMn0w0I.=l5qCDxT8+NBq*|x:I.)f?I5=?+'
+SECURE_AUTH_KEY:    'aWrFNtqy,T{W%6M#Rc{+Z@YdB aTPt`htCn@.hFTH.3uH}=&|yEiOJq]!Xg;Rp.{'
+LOGGED_IN_KEY:      'm]G,/OPP[}J&z>>k?wIkNn~vT*Gw3@v(6{k}}iTONYV[n(| cE`PYKL.HQx,cHKX'
+NONCE_KEY:          'Yu BKK{hmp l):;mSjvY<J](*s]to1~KN5fCn@RtVU;1-f>6>Z$%b2yR?@zUOT@9'
+AUTH_SALT:          'P!#e (4^FK^5qUI(s.1U5B|!a(pC1bsDa=Bc.;Y#q3o`;{_=)XH:&_j>QS$iLWdL'
+SECURE_AUTH_SALT:   ']NuyVldpOF+;L4c, pZOt-Jbu%[THfC=O}/4@+$<IYh2;OF.!?^yWr1K,EkZ-aH$'
+LOGGED_IN_SALT:     ')+KZ]>|jJ0eh*i}%;[Mm+Aq#q[{rcNI6dh@jX#`dV]Hvmce^+}~,hG$6yB^|U>y-'
+NONCE_SALT:         'xjeg$n8p FB1!I]_+k!]XL?kJm|DORH>L((Zv`:@J?j*c0-_ms2M^0T/4Z)3|8;L'
+
+## WordPress Database Table prefix
+TABLE_PREFIX: 'wp_'
+
+## WordPress debugging mode
+WP_DEBUG: true
+
+## Site root URL
+SITE_URL: 'http://localhost/wordpress'
+
+
