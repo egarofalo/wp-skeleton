@@ -29,3 +29,5 @@ Busque temas de Wordpress en el repositorio https://wpackagist.org/ y luego ejec
 Busque dependencias PHP en el repositorio https://packagist.org/ y luego ejecute (en la misma ubicación que el archivo composer.json) composer require vendor/package-name para instalar librerías.
 
 # Archivo de configuración de Wordpress
+
+En el archivo config/wp-config.yml se debe cargar la misma configuración de Wordpress que se cargaba en el archivo wp-config.php tradicional. Este archivo se encuentra protegido por medio de un .htaccess, por lo tanto la informacion sensible del proyecto está protegida.
