@@ -1,0 +1,26 @@
+{
+    "repositories": [
+        {
+            "type": "composer",
+            "url": "https://wpackagist.org"
+        }
+    ],
+    "require": {
+        "php": ">=5.4",
+        "johnpbloch/wordpress": "^4.8",
+        "symfony/yaml": "^3.3.5"
+    },
+    "extra": {
+        "wordpress-install-dir": "wp"
+    },
+    "autoload": {
+        "psr-4": {
+            "CoDevelopers\\WpSkeleton\\Config\\": "config"
+        }
+    },    
+    "scripts": {
+        "post-create-project-cmd": "CoDevelopers\\WpSkeleton\\Config\\ComposerSetup::postCreateProject",
+        "post-update-cmd": "CoDevelopers\\WpSkeleton\\Config\\ComposerSetup::postUpdate",
+        "post-install-cmd": "CoDevelopers\\WpSkeleton\\Config\\ComposerSetup::postInstall"
+    }
+}
