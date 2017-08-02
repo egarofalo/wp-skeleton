@@ -32,4 +32,12 @@ WP_DEBUG: true
 ## Site root URL
 SITE_URL: 'http://localhost/wordpress'
 
+## Proxy server
+PROXY:
+    HOST: ''
+    PORT: ''
+    USERNAME: ''
+    PASSWORD: ''
+    EXCLUDED_HOSTS: ''
+
 
