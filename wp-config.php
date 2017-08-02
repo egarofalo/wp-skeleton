@@ -94,7 +94,7 @@ define('SAVEQUERIES', WP_DEBUG);
  * Moving wp-content folder.
  * https://codex.wordpress.org/Editing_wp-config.php#Moving_wp-content_folder
  */
-define('WP_SITE_URL', $WP_CONFIG['SITE_URL']);
+define('WP_SITEURL', $WP_CONFIG['SITE_URL'] . '/wp');
 define('WP_HOME', $WP_CONFIG['SITE_URL']);
 define('WP_CONTENT_DIR', $ROOT_PATH . '/wp-content');
 define('WP_CONTENT_URL', $WP_CONFIG['SITE_URL'] . '/wp-content');
