@@ -6,9 +6,13 @@ Wordpress Skeleton, integrado con Composer y Yaml.
 
 Wordpress Skeleton es un esqueleto de Wordpress que sigue las mejores prácticas de cómo se debe estructurar los archivos de un framework MVC y administrar las dependencias del mismo. Los archivos del core de Wordpress están ubicados en una subcarpeta, llamada wp. Esto ayuda al desarrollador a diferenciar los archivos propios del proyecto de los archivos del core de Wordpress. Por otro lado se utiliza Composer para instalar las dependencias, ya sean librerías de PHP, temas y plugins de Wordpress. Finalmente wp-skeleton dispone de un archivo de configuración wp-config.yml protegido por medio de un .htaccess, quitando la información sensible del archivo wp-config.php.
 
-# Instalación
+# Instalación desde github
 
 Descargue el proyecto desde github o a través del comando git clone, y luego ejecute el comando composer install dentro de la raíz del proyecto (ubicación del archivo composer.json).
+
+# Instalación con Composer
+
+Instale composer en su equipo https://getcomposer.org/download/ y una vez instalado ejecute el comando "composer create-project co-developers/wp-skeleton". Si quiere instalar el proyecto en una carpeta especifica indique el nombre de la carpeta destino "composer create-project co-developers/wp-skeleton dest".
 
 # Actualizando las dependencias
 
