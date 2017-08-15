@@ -1,4 +1,20 @@
 {
+    "name": "co-developers/wp-skeleton",
+    "type": "project",
+    "license": "MIT",
+    "description": "WordPress Skeleton con herramientas modernas de desarrollo, fácil configuración, mayor seguridad, y una estructura de carpetas mas ordenada",
+    "homepage": "http://co-developers.com",
+    "authors": [
+        {
+            "name": "Edgardo Garofalo",
+            "email": "egarofalo2002@hotmail.com",
+            "homepage": "https://github.com/egarofalo",
+            "role": "Developer"
+        }
+    ],
+    "keywords": [
+        "wp-skeleton", "co-developers", "wordpress", "composer", "wp"
+    ],    
     "repositories": [
         {
             "type": "composer",
