@@ -17,7 +17,7 @@ class ComposerSetup {
         self::setupProject();
     }
 
-    public static function postCreateProject(PackageEvent $event) {
+    public static function postCreateProject(Event $event) {
         self::setupProject();
     }
 
