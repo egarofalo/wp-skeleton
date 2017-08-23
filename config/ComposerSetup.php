@@ -29,7 +29,9 @@ class ComposerSetup {
             self::rrmdir(dirname(__FILE__) . '/../wp/wp-content');
         }
         // protect vendor folder with an .htaccess file
-        copy(dirname(__FILE__) . '/.htaccess', dirname(__FILE__) . '/../vendor/.htaccess');
+        if (!file_exists(dirname(__FILE__) . '/../vendor/.htaccess')) {
+            copy(dirname(__FILE__) . '/.htaccess', dirname(__FILE__) . '/../vendor/.htaccess');
+        }
     }
 
     private static function rrmdir($dir) {
