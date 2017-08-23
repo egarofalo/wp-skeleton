@@ -1,16 +1,16 @@
 ## MySQL settings
 ## The name of the database for WordPress
-DB_NAME: ''
+DB_NAME:
 ## MySQL database username
-DB_USER: ''
+DB_USER:
 ## MySQL database password
-DB_PASSWORD: ''
+DB_PASSWORD:
 ## MySQL hostname
 DB_HOST: 'localhost'
 ## Database Charset to use in creating database tables
 DB_CHARSET: 'utf8mb4'
 ## The Database Collate type
-DB_COLLATE: ''
+DB_COLLATE:
 
 ## Authentication Unique Keys and Salts
 ## https://api.wordpress.org/secret-key/1.1/salt/
@@ -34,8 +34,8 @@ SITE_URL: 'http://localhost/wordpress'
 
 ## Proxy server
 PROXY:
-    HOST: ''
-    PORT: ''
-    USERNAME: ''
-    PASSWORD: ''
-    EXCLUDED_HOSTS: ''
+    HOST:
+    PORT:
+    USERNAME:
+    PASSWORD:
+    EXCLUDED_HOSTS:
