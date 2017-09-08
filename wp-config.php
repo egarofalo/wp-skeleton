@@ -103,13 +103,11 @@ define('WP_PLUGIN_URL', $WP_CONFIG['SITE_URL'] . '/wp-content/plugins');
 /**
  * Proxy server
  */
-if (!is_null($WP_CONFIG['PROXY']['HOST'])) {
-    define('WP_PROXY_HOST', $WP_CONFIG['PROXY']['HOST']);
-    define('WP_PROXY_PORT', $WP_CONFIG['PROXY']['PORT']);
-    define('WP_PROXY_USERNAME', $WP_CONFIG['PROXY']['USERNAME']);
-    define('WP_PROXY_PASSWORD', $WP_CONFIG['PROXY']['PASSWORD']);
-    define('WP_PROXY_BYPASS_HOSTS', $WP_CONFIG['PROXY']['EXCLUDED_HOSTS']);
-}
+define('WP_PROXY_HOST', $WP_CONFIG['PROXY']['HOST']);
+define('WP_PROXY_PORT', $WP_CONFIG['PROXY']['PORT']);
+define('WP_PROXY_USERNAME', $WP_CONFIG['PROXY']['USERNAME']);
+define('WP_PROXY_PASSWORD', $WP_CONFIG['PROXY']['PASSWORD']);
+define('WP_PROXY_BYPASS_HOSTS', $WP_CONFIG['PROXY']['EXCLUDED_HOSTS']);
 
 /** Absolute path to the WordPress directory. */
 if (!defined('ABSPATH')) {
