@@ -111,6 +111,11 @@ if (!is_null($WP_CONFIG['PROXY']['HOST'])) {
     define('WP_PROXY_BYPASS_HOSTS', $WP_CONFIG['PROXY']['EXCLUDED_HOSTS']);
 }
 
+/**
+ * Set the default theme
+ */
+define('WP_DEFAULT_THEME', $WP_CONFIG['DEFAULT_THEME']);
+
 /** Absolute path to the WordPress directory. */
 if (!defined('ABSPATH')) {
     define('ABSPATH', $ROOT_PATH . '/wp/');

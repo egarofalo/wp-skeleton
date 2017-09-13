@@ -39,3 +39,6 @@ PROXY:
     USERNAME:
     PASSWORD:
     EXCLUDED_HOSTS:
+        
+## Default theme
+DEFAULT_THEME: twentyseventeen        

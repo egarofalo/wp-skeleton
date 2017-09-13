@@ -24,16 +24,33 @@ class ComposerSetup {
     private static function setupProject() {
         // output the message
         echo self::$output;
-        // remove wp/wp-content folder
+        self::removeWpContent();
+        self::protectVendorFolder();
+    }
+
+    /**
+     * Remove wp/wp-content folder
+     */
+    private static function removeWpContent() {
         if (file_exists(dirname(__FILE__) . '/../wp/wp-content')) {
             self::rrmdir(dirname(__FILE__) . '/../wp/wp-content');
         }
-        // protect vendor folder with an .htaccess file
+    }
+
+    /**
+     * Protect vendor folder with an .htaccess file
+     */
+    private static function protectVendorFolder() {
         if (!file_exists(dirname(__FILE__) . '/../vendor/.htaccess')) {
             copy(dirname(__FILE__) . '/.htaccess', dirname(__FILE__) . '/../vendor/.htaccess');
         }
     }
 
+    /**
+     * Recursively remove folders
+     * 
+     * @param type $dir - Folder to be removed
+     */
     private static function rrmdir($dir) {
         if (is_dir($dir)) {
             $files = scandir($dir);
