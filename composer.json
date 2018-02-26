@@ -36,6 +36,6 @@
         }
     },    
     "scripts": {
-        "post-root-package-install": "CoDevelopers\\WpSkeleton\\Config\\ComposerSetup::postRootPackageInstall"
+        "post-create-project-cmd": "CoDevelopers\\WpSkeleton\\Config\\ComposerSetup::postCreateProject"
     }
 }

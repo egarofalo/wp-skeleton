@@ -9,15 +9,15 @@ class ComposerSetup {
     private static $output = 'Configuring Wordpress Skeleton...';
 
     public static function postUpdate(Event $event) {
-        //self::setupProject();
+        self::setupProject();
     }
 
     public static function postInstall(Event $event) {
-        //self::setupProject();
+        self::setupProject();
     }
 
     public static function postCreateProject(Event $event) {
-        //self::setupProject();
+        self::setupProject();
     }
     
     public static function postRootPackageInstall(Event $event) {
