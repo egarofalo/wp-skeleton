@@ -18,14 +18,21 @@
  * @package WordPress
  */
 
+use Symfony\Component\Yaml\Yaml;
+
 /** Root path */
 $ROOT_PATH = dirname(__FILE__);
 
 /** Include composer autoloader */
 require_once $ROOT_PATH . '/vendor/autoload.php';
 
-/** Data config protected in wp-config.yml file */
-$WP_CONFIG = \Symfony\Component\Yaml\Yaml::parse(file_get_contents($ROOT_PATH . '/config/wp-config.yml'));
+/** Data config protected in config.yml file */
+$CONFIG = Yaml::parse(file_get_contents($ROOT_PATH . '/config/config.yml'));
+$ENV = $CONFIG['ENVIRONMENT'];
+if (!file_exists("{$ROOT_PATH}/config/{$CONFIG['IMPORTS'][$ENV]}")) {
+    die('Invalid environment');
+}
+$WP_CONFIG = Yaml::parse(file_get_contents("{$ROOT_PATH}/config/{$CONFIG['IMPORTS'][$ENV]}"));
 
 // ** MySQL settings - You can get this info from your web host ** //
 /** The name of the database for WordPress */
@@ -87,8 +94,6 @@ $table_prefix  = $WP_CONFIG['TABLE_PREFIX'];
  * @link https://codex.wordpress.org/Debugging_in_WordPress
  */
 define('WP_DEBUG', $WP_CONFIG['WP_DEBUG']);
-define('WP_DEBUG_DISPLAY', WP_DEBUG);
-define('SAVEQUERIES', WP_DEBUG);
 
 /**
  * Moving wp-content folder.

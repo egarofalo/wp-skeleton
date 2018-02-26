@@ -3,28 +3,31 @@
 namespace CoDevelopers\WpSkeleton\Config;
 
 use Composer\Script\Event;
-use Composer\Installer\PackageEvent;
 
 class ComposerSetup {
 
     private static $output = 'Configuring Wordpress Skeleton...';
 
     public static function postUpdate(Event $event) {
-        self::setupProject();
+        //self::setupProject();
     }
 
     public static function postInstall(Event $event) {
-        self::setupProject();
+        //self::setupProject();
     }
 
     public static function postCreateProject(Event $event) {
+        //self::setupProject();
+    }
+    
+    public static function postRootPackageInstall(Event $event) {
         self::setupProject();
     }
 
     private static function setupProject() {
         // output the message
         echo self::$output;
-        self::removeWpContent();
+        //self::removeWpContent();
         self::protectVendorFolder();
     }
 

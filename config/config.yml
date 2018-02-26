@@ -1,0 +1,8 @@
+## Set the environment here
+ENVIRONMENT: development
+
+## Config files
+IMPORTS:
+    - development: config.development.yml
+    - testing: config.testing.yml
+    - production: config.production.yml
