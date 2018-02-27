@@ -28,16 +28,21 @@ El archivo composer.lock, generado una vez que se instala el proyecto con compos
 
 # Instalar plugins
 
-Busque plugins de Wordpress en el repositorio https://wpackagist.org/ y luego ejecute (en la misma ubicación que el archivo composer.json) composer require wpackagist-plugin/plugin-name para instalar plugins.
+Busque plugins de Wordpress en el repositorio https://wpackagist.org/ y luego ejecute (en la misma ubicación que el archivo <code>composer.json</code>) <code>composer require wpackagist-plugin/plugin-name</code> para instalar plugins. También puede instalar los plugins desde el dashboard.
 
 # Instalar temas
 
-Busque temas de Wordpress en el repositorio https://wpackagist.org/ y luego ejecute (en la misma ubicación que el archivo composer.json) composer require wpackagist-theme/theme-name para instalar temas.
+Busque temas de Wordpress en el repositorio https://wpackagist.org/ y luego ejecute (en la misma ubicación que el archivo <code>composer.json</code>) <code>composer require wpackagist-theme/theme-name</code> para instalar temas. También puede instalar los temas desde el dashboard.
 
 # Instalar librerías PHP
 
-Busque dependencias PHP en el repositorio https://packagist.org/ y luego ejecute (en la misma ubicación que el archivo composer.json) composer require vendor/package-name para instalar librerías.
+Busque dependencias PHP en el repositorio https://packagist.org/ y luego ejecute (en la misma ubicación que el archivo <code>composer.json</code>) <code>composer require vendor/package-nam</code> para instalar librerías de PHP.
 
 # Archivo de configuración de Wordpress
 
-En el archivo config/wp-config.yml se debe cargar la misma configuración de Wordpress que se cargaba en el archivo wp-config.php tradicional. Este archivo se encuentra protegido por medio de un .htaccess, por lo tanto la informacion sensible del proyecto está protegida.
+En el archivo <code>config/config.yml</code> se debe activar el entorno en que se esta ejecutando su sitio (<code>development</code>, <code>testing</code> o <code>produciton</code>).
+En los archivos:
+- <code>config/config.development.yml</code> se debe cargar la configuración de WordPress en el entorno de desarrollo.
+- <code>config/config.testing.yml</code> se debe cargar la configuración de WordPress en el entorno de testing.
+- <code>config/config.testing.yml</code> se debe cargar la configuración de WordPress en el entorno de producción.
+Todos estos archivos se encuentra protegidos por medio de un .htaccess, por lo tanto la informacion sensible del proyecto está protegida.
