@@ -30,7 +30,7 @@ TABLE_PREFIX: 'wp_'
 WP_DEBUG: true
 
 ## Site root URL
-SITE_URL: 'http://wordpress.development'
+SITE_URL: 'http://example.dev'
 
 ## Proxy server
 PROXY:

@@ -36,6 +36,8 @@
         }
     },    
     "scripts": {
-        "post-create-project-cmd": "CoDevelopers\\WpSkeleton\\Config\\ComposerSetup::postCreateProject"
+        "post-create-project-cmd": "CoDevelopers\\WpSkeleton\\Config\\ComposerSetup::postCreateProject",
+        "post-install-cmd": "CoDevelopers\\WpSkeleton\\Config\\ComposerSetup::postInstall",
+        "post-update-cmd": "CoDevelopers\\WpSkeleton\\Config\\ComposerSetup::postUpdate"
     }
 }

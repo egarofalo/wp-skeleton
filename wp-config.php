@@ -26,13 +26,13 @@ $ROOT_PATH = dirname(__FILE__);
 /** Include composer autoloader */
 require_once $ROOT_PATH . '/vendor/autoload.php';
 
-/** Data config protected in config.yml file */
+/** WordPress config in config.yml file */
 $CONFIG = Yaml::parse(file_get_contents($ROOT_PATH . '/config/config.yml'));
-$ENV = $CONFIG['ENVIRONMENT'];
-if (!file_exists("{$ROOT_PATH}/config/{$CONFIG['IMPORTS'][$ENV]}")) {
-    die('Invalid environment');
+if (!isset($CONFIG['IMPORTS'][$CONFIG['ENVIRONMENT']])) {
+    die('Invalid environment in <code>config.yml</code> file');
 }
-$WP_CONFIG = Yaml::parse(file_get_contents("{$ROOT_PATH}/config/{$CONFIG['IMPORTS'][$ENV]}"));
+$WP_CONFIG_FILE = $ROOT_PATH . '/config/' . $CONFIG['IMPORTS'][$CONFIG['ENVIRONMENT']];
+$WP_CONFIG = Yaml::parse(file_get_contents($WP_CONFIG_FILE));
 
 // ** MySQL settings - You can get this info from your web host ** //
 /** The name of the database for WordPress */
