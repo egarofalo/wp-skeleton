@@ -47,4 +47,4 @@ En los archivos:
 <li><code>config/config.testing.yml</code> se debe cargar la configuración de WordPress en el entorno de testing.</li>
 <li><code>config/config.testing.yml</code> se debe cargar la configuración de WordPress en el entorno de producción.</li>
 </ul>
-Todos estos archivos se encuentra protegidos por medio de un .htaccess, por lo tanto la informacion sensible del proyecto está protegida.
+<p>Todos estos archivos se encuentra protegidos por medio de un .htaccess, por lo tanto la informacion sensible del proyecto está protegida.</p>
