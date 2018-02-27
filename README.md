@@ -42,7 +42,10 @@ Busque dependencias PHP en el repositorio https://packagist.org/ y luego ejecute
 
 En el archivo <code>config/config.yml</code> se debe activar el entorno en que se esta ejecutando su sitio (<code>development</code>, <code>testing</code> o <code>produciton</code>).
 En los archivos:
-- <code>config/config.development.yml</code> se debe cargar la configuración de WordPress en el entorno de desarrollo.
-- <code>config/config.testing.yml</code> se debe cargar la configuración de WordPress en el entorno de testing.
-- <code>config/config.testing.yml</code> se debe cargar la configuración de WordPress en el entorno de producción.
+<ul>
+<li><code>config/config.development.yml</code> se debe cargar la configuración de WordPress en el entorno de desarrollo.</li>
+<li><code>config/config.testing.yml</code> se debe cargar la configuración de WordPress en el entorno de testing.</li>
+<li><code>config/config.testing.yml</code> se debe cargar la configuración de WordPress en el entorno de producción.</li>
+</ul>
+<br>
 Todos estos archivos se encuentra protegidos por medio de un .htaccess, por lo tanto la informacion sensible del proyecto está protegida.
