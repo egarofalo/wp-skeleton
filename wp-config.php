@@ -103,6 +103,7 @@ define('WP_SITEURL', $WP_CONFIG['SITE_URL'] . '/wp');
 define('WP_HOME', $WP_CONFIG['SITE_URL']);
 define('WP_CONTENT_DIR', $ROOT_PATH . '/wp-content');
 define('WP_CONTENT_URL', $WP_CONFIG['SITE_URL'] . '/wp-content');
+define('WP_PLUGIN_DIR', $ROOT_PATH . '/wp-content/plugins');
 define('WP_PLUGIN_URL', $WP_CONFIG['SITE_URL'] . '/wp-content/plugins');
 
 /**
