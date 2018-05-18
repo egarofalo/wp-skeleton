@@ -9,7 +9,7 @@ Wordpress Skeleton es un esqueleto de Wordpress que sigue las mejores prácticas
 # Requerimientos
 
 Para comenzar a utilizar WP Skeleton se deben cumplir los siguientes requisitos:
-- php ^5.5.9|>=7.0.8
+- php ^7.1.3
 - Tener Composer instalado
 
 # Instalación desde github
