@@ -105,6 +105,8 @@ define('WP_CONTENT_DIR', $ROOT_PATH . '/wp-content');
 define('WP_CONTENT_URL', $WP_CONFIG['SITE_URL'] . '/wp-content');
 define('WP_PLUGIN_DIR', $ROOT_PATH . '/wp-content/plugins');
 define('WP_PLUGIN_URL', $WP_CONFIG['SITE_URL'] . '/wp-content/plugins');
+define('WPMU_PLUGIN_DIR', $ROOT_PATH . '/wp-content/mu-plugins');
+define('WPMU_PLUGIN_URL', $WP_CONFIG['SITE_URL'] . '/wp-content/mu-plugins');
 
 /**
  * Proxy server
