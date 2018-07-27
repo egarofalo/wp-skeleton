@@ -24,10 +24,10 @@ use Symfony\Component\Yaml\Yaml;
 $ROOT_PATH = dirname(__FILE__);
 
 /** Include composer autoloader */
-require_once $ROOT_PATH . '/vendor/autoload.php';
+require_once $ROOT_PATH . '/../vendor/autoload.php';
 
 /** WordPress config in config.yml file */
-$CONFIG = Yaml::parse(file_get_contents($ROOT_PATH . '/config/config.yml'));
+$CONFIG = Yaml::parse(file_get_contents($ROOT_PATH . '/../config/config.yml'));
 if (!isset($CONFIG['IMPORTS'][$CONFIG['ENVIRONMENT']])) {
     die('Invalid environment in <code>config.yml</code> file');
 }
@@ -101,12 +101,12 @@ define('WP_DEBUG', $WP_CONFIG['WP_DEBUG']);
  */
 define('WP_SITEURL', $WP_CONFIG['SITE_URL'] . '/wp');
 define('WP_HOME', $WP_CONFIG['SITE_URL']);
-define('WP_CONTENT_DIR', $ROOT_PATH . '/wp-content');
-define('WP_CONTENT_URL', $WP_CONFIG['SITE_URL'] . '/wp-content');
-define('WP_PLUGIN_DIR', $ROOT_PATH . '/wp-content/plugins');
-define('WP_PLUGIN_URL', $WP_CONFIG['SITE_URL'] . '/wp-content/plugins');
-define('WPMU_PLUGIN_DIR', $ROOT_PATH . '/wp-content/mu-plugins');
-define('WPMU_PLUGIN_URL', $WP_CONFIG['SITE_URL'] . '/wp-content/mu-plugins');
+define('WP_CONTENT_DIR', $ROOT_PATH . '/content');
+define('WP_CONTENT_URL', $WP_CONFIG['SITE_URL'] . '/content');
+define('WP_PLUGIN_DIR', $ROOT_PATH . '/content/plugins');
+define('WP_PLUGIN_URL', $WP_CONFIG['SITE_URL'] . '/content/plugins');
+define('WPMU_PLUGIN_DIR', $ROOT_PATH . '/content/mu-plugins');
+define('WPMU_PLUGIN_URL', $WP_CONFIG['SITE_URL'] . '/content/mu-plugins');
 
 /**
  * Proxy server

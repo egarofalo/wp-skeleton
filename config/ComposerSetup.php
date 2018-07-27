@@ -49,18 +49,7 @@ class ComposerSetup
         // output the message
         echo self::$output;
         self::createFileSystem();
-        self::protectVendorFolder();
         self::removeWpContent();
-    }
-
-    /**
-     * Protect vendor folder with an .htaccess file
-     */
-    private static function protectVendorFolder()
-    {
-        if (!self::$fileSystem->exists(dirname(__FILE__) . '/../vendor/.htaccess')) {
-            self::$fileSystem->copy(dirname(__FILE__) . '/.htaccess', dirname(__FILE__) . '/../vendor/.htaccess');
-        }
     }
 
     /**
@@ -68,8 +57,8 @@ class ComposerSetup
      */
     private static function removeWpContent()
     {
-        if (self::$fileSystem->exists(dirname(__FILE__) . '/../wp/wp-content')) {
-            self::$fileSystem->remove(dirname(__FILE__) . '/../wp/wp-content');
+        if (self::$fileSystem->exists(dirname(__FILE__) . '/public/wp/wp-content')) {
+            self::$fileSystem->remove(dirname(__FILE__) . '/public/wp/wp-content');
         }
     }
 }
