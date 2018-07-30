@@ -4,17 +4,17 @@ Wordpress Skeleton, integrado con Composer y Yaml.
 
 # Descripción
 
-Wordpress Skeleton es un esqueleto de Wordpress que sigue las mejores prácticas de cómo se debe estructurar los archivos y carpetas de un framework MVC y administrar las dependencias del mismo. Los archivos del core de Wordpress están ubicados en una subcarpeta, llamada <code>wp</code>. Esto ayuda al desarrollador a diferenciar los archivos propios del proyecto de los archivos del core de Wordpress. Por otro lado se utiliza Composer para instalar las dependencias, ya sean librerías de PHP, temas y plugins de Wordpress. Finalmente se dispone de un archivo de configuración <code>config.yml</code> protegido por medio de un .htaccess, quitando la información sensible del archivo <code>wp-config.php</code>.
+Wordpress Skeleton es un esqueleto de Wordpress que tiene mayor seguridad y una mejor estructura. Los archivos del core de Wordpress están ubicados en una subcarpeta, llamada <code>public/wp</code>. La vieja y conocida carpeta <code>wp-content</code> es remplazada por <code>public/content</code>. Por otro lado se utiliza Composer para instalar las dependencias, ya sean librerías de PHP, temas y plugins de Wordpress. Finalmente se dispone de un archivo de configuración <code>config/config.yml</code> ubicado afuera de la carpeta pública ya que contiene la información sensible del archivo <code>wp-config.php</code>.
 
 # Requerimientos
 
-Para comenzar a utilizar WP Skeleton se deben cumplir los siguientes requisitos:
+Para comenzar a utilizar WP Skeleton se requiere de:
 - php ^7.1.3
-- Tener Composer instalado
+- Composer
 
 # Instalación desde github
 
-Descargue el proyecto desde github o a través del comando git clone, y luego ejecute el comando <code>composer install</code> dentro de la raíz del proyecto (ubicación del archivo <code>composer.json</code>).
+Descargue el proyecto desde github o a través del comando <code>git clone</code>, y luego ejecute el comando <code>composer install</code> dentro de la raíz del proyecto (ubicación del archivo <code>composer.json</code>).
 
 # Instalación con Composer
 
@@ -46,4 +46,3 @@ En los archivos:
 <li><code>config/config.testing.yml</code> se debe cargar la configuración de WordPress en el entorno de testing.</li>
 <li><code>config/config.testing.yml</code> se debe cargar la configuración de WordPress en el entorno de producción.</li>
 </ul>
-<p>Todos estos archivos están protegidos por medio de un .htaccess a traves de la directiva <code>Deny from all</code>, por lo tanto la información de configuración está protegida.</p>
