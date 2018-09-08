@@ -57,8 +57,8 @@ class ComposerSetup
      */
     private static function removeWpContent()
     {
-        if (self::$fileSystem->exists(dirname(__FILE__) . '/public/wp/wp-content')) {
-            self::$fileSystem->remove(dirname(__FILE__) . '/public/wp/wp-content');
+        if (self::$fileSystem->exists(dirname(__FILE__) . '/../public/wp/wp-content')) {
+            self::$fileSystem->remove(dirname(__FILE__) . '/../public/wp/wp-content');
         }
     }
 }
