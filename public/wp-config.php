@@ -31,7 +31,7 @@ $CONFIG = Yaml::parse(file_get_contents($ROOT_PATH . '/../config/config.yml'));
 if (!isset($CONFIG['IMPORTS'][$CONFIG['ENVIRONMENT']])) {
     die('Invalid environment in <code>config.yml</code> file');
 }
-$WP_CONFIG_FILE = $ROOT_PATH . '/config/' . $CONFIG['IMPORTS'][$CONFIG['ENVIRONMENT']];
+$WP_CONFIG_FILE = $ROOT_PATH . '/../config/' . $CONFIG['IMPORTS'][$CONFIG['ENVIRONMENT']];
 $WP_CONFIG = Yaml::parse(file_get_contents($WP_CONFIG_FILE));
 
 // ** MySQL settings - You can get this info from your web host ** //
