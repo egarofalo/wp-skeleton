@@ -1,4 +1,5 @@
 <?php
+
 /**
  * The base configuration for WordPress
  *
@@ -18,40 +19,39 @@
  * @package WordPress
  */
 
-use Symfony\Component\Yaml\Yaml;
-
-/** Root path */
-$ROOT_PATH = dirname(__FILE__);
+use Symfony\Component\Dotenv\Dotenv;
 
 /** Include composer autoloader */
-require_once $ROOT_PATH . '/../vendor/autoload.php';
+require_once __DIR__ . '/../vendor/autoload.php';
 
-/** WordPress config in config.yml file */
-$CONFIG = Yaml::parse(file_get_contents($ROOT_PATH . '/../config/config.yml'));
-if (!isset($CONFIG['IMPORTS'][$CONFIG['ENVIRONMENT']])) {
-    die('Invalid environment in <code>config.yml</code> file');
+/** Retrieves the value of an environment variable or the default value */
+$env = function ($key, $default = false) {
+    return $_ENV[$key] ? $_ENV[$key] : $default;
+};
+
+/** Load WordPress config .env file */
+if (!$env('APP_ENV')) {
+    $dotenv = new Dotenv();
+    $dotenv->loadEnv(__DIR__ . '/../config/.env');
 }
-$WP_CONFIG_FILE = $ROOT_PATH . '/config/' . $CONFIG['IMPORTS'][$CONFIG['ENVIRONMENT']];
-$WP_CONFIG = Yaml::parse(file_get_contents($WP_CONFIG_FILE));
 
-// ** MySQL settings - You can get this info from your web host ** //
-/** The name of the database for WordPress */
-define('DB_NAME', $WP_CONFIG['DB_NAME']);
+/** The name of the MySQL database for WordPress */
+define('DB_NAME', $env('DB_NAME'));
 
 /** MySQL database username */
-define('DB_USER', $WP_CONFIG['DB_USER']);
+define('DB_USER', $env('DB_USER'));
 
 /** MySQL database password */
-define('DB_PASSWORD', $WP_CONFIG['DB_PASSWORD']);
+define('DB_PASSWORD', $env('DB_PASSWORD'));
 
 /** MySQL hostname */
-define('DB_HOST', $WP_CONFIG['DB_HOST']);
+define('DB_HOST', $env('DB_HOST'));
 
 /** Database Charset to use in creating database tables. */
-define('DB_CHARSET', $WP_CONFIG['DB_CHARSET']);
+define('DB_CHARSET', $env('DB_CHARSET', 'utf8mb4'));
 
 /** The Database Collate type. Don't change this if in doubt. */
-define('DB_COLLATE', $WP_CONFIG['DB_COLLATE']);
+define('DB_COLLATE', $env('DB_COLLATE', 'utf8mb4_unicode_ci'));
 
 /**#@+
  * Authentication Unique Keys and Salts.
@@ -62,14 +62,7 @@ define('DB_COLLATE', $WP_CONFIG['DB_COLLATE']);
  *
  * @since 2.6.0
  */
-define('AUTH_KEY', $WP_CONFIG['AUTH_KEY']);
-define('SECURE_AUTH_KEY', $WP_CONFIG['SECURE_AUTH_KEY']);
-define('LOGGED_IN_KEY', $WP_CONFIG['LOGGED_IN_KEY']);
-define('NONCE_KEY', $WP_CONFIG['NONCE_KEY']);
-define('AUTH_SALT', $WP_CONFIG['AUTH_SALT']);
-define('SECURE_AUTH_SALT', $WP_CONFIG['SECURE_AUTH_SALT']);
-define('LOGGED_IN_SALT', $WP_CONFIG['LOGGED_IN_SALT']);
-define('NONCE_SALT', $WP_CONFIG['NONCE_SALT']);
+require_once __DIR__ . "/../config/salts.php";
 
 /**#@-*/
 
@@ -79,7 +72,7 @@ define('NONCE_SALT', $WP_CONFIG['NONCE_SALT']);
  * You can have multiple installations in one database if you give each
  * a unique prefix. Only numbers, letters, and underscores please!
  */
-$table_prefix  = $WP_CONFIG['TABLE_PREFIX'];
+$table_prefix  = $env('TABLE_PREFIX', 'wp_');
 
 /**
  * For developers: WordPress debugging mode.
@@ -93,40 +86,70 @@ $table_prefix  = $WP_CONFIG['TABLE_PREFIX'];
  *
  * @link https://codex.wordpress.org/Debugging_in_WordPress
  */
-define('WP_DEBUG', $WP_CONFIG['WP_DEBUG']);
+define('WP_DEBUG', $env('debug', true));
 
 /**
  * Moving wp-content folder.
  * https://codex.wordpress.org/Editing_wp-config.php#Moving_wp-content_folder
  */
-define('WP_SITEURL', $WP_CONFIG['SITE_URL'] . '/wp');
-define('WP_HOME', $WP_CONFIG['SITE_URL']);
-define('WP_CONTENT_DIR', $ROOT_PATH . '/content');
-define('WP_CONTENT_URL', $WP_CONFIG['SITE_URL'] . '/content');
-define('WP_PLUGIN_DIR', $ROOT_PATH . '/content/plugins');
-define('WP_PLUGIN_URL', $WP_CONFIG['SITE_URL'] . '/content/plugins');
-define('WPMU_PLUGIN_DIR', $ROOT_PATH . '/content/mu-plugins');
-define('WPMU_PLUGIN_URL', $WP_CONFIG['SITE_URL'] . '/content/mu-plugins');
+define('WP_SITEURL', $env('SITE_URL') . '/wp');
+define('WP_HOME', $env('SITE_URL'));
+define('WP_CONTENT_DIR', __DIR__ . '/content');
+define('WP_CONTENT_URL', $env('SITE_URL') . '/content');
+define('WP_PLUGIN_DIR', __DIR__ . '/content/plugins');
+define('WP_PLUGIN_URL', $env('SITE_URL') . '/content/plugins');
+define('WPMU_PLUGIN_DIR', __DIR__ . '/content/mu-plugins');
+define('WPMU_PLUGIN_URL', $env('SITE_URL') . '/content/mu-plugins');
+
+/**
+ * Force SSL Login and Admin access.
+ */
+define('FORCE_SSL_ADMIN', $env('FORCE_SSL_ADMIN', true));
 
 /**
  * Proxy server
  */
-if (!is_null($WP_CONFIG['PROXY']['HOST'])) {
-    define('WP_PROXY_HOST', $WP_CONFIG['PROXY']['HOST']);
-    define('WP_PROXY_PORT', $WP_CONFIG['PROXY']['PORT']);
-    define('WP_PROXY_USERNAME', $WP_CONFIG['PROXY']['USERNAME']);
-    define('WP_PROXY_PASSWORD', $WP_CONFIG['PROXY']['PASSWORD']);
-    define('WP_PROXY_BYPASS_HOSTS', $WP_CONFIG['PROXY']['EXCLUDED_HOSTS']);
+if ($env('proxy')) {
+    define('WP_PROXY_HOST', $env('PROXY_HOST'));
+    define('WP_PROXY_PORT', $env('PROXY_PORT'));
+    define('WP_PROXY_USERNAME', $env('PROXY_USERNAME'));
+    define('WP_PROXY_PASSWORD', $env('PROXY_PASSWORD'));
+    define('WP_PROXY_BYPASS_HOSTS', $env('PROXY_EXCLUDED_HOSTS'));
 }
 
 /**
- * Set the default theme
+ * If WordPress is hosted behind a reverse proxy that provides SSL, but is hosted itself without SSL, FORCE_SSL_ADMIN will initially send any requests into an infinite redirect loop.
+ * To avoid this, you may configure WordPress to recognize the HTTP_X_FORWARDED_PROTO header (assuming you have properly configured the reverse proxy to set that header).
  */
-define('WP_DEFAULT_THEME', $WP_CONFIG['DEFAULT_THEME']);
+if (strpos($_SERVER['HTTP_X_FORWARDED_PROTO'], 'https') !== false) {
+    $_SERVER['HTTPS'] = 'on';
+}
+
+/**
+ * Disable all automatic WordPress updates.
+ */
+define('AUTOMATIC_UPDATER_DISABLED', true);
+
+/**
+ * Define constants for PHPMailer configuration.
+ */
+define('PHPMAILER_IS_SMTP', $env('PHPMAILER_IS_SMTP'));
+define('PHPMAILER_HOST', $env('PHPMAILER_HOST'));
+define('PHPMAILER_SMTP_AUTH', $env('PHPMAILER_SMTP_AUTH'));
+define('PHPMAILER_PORT', $env('PHPMAILER_PORT'));
+define('PHPMAILER_USERNAME', $env('PHPMAILER_USERNAME'));
+define('PHPMAILER_PASSWORD', $env('PHPMAILER_PASSWORD'));
+define('PHPMAILER_SMTP_SECURE', $env('PHPMAILER_SMTP_SECURE'));
+define('PHPMAILER_FROM', $env('PHPMAILER_FROM'));
+
+/**
+ * Disable theme editor and plugins editor in the dashboard.
+ */
+define('DISALLOW_FILE_EDIT', $env('FILE_EDIT', true));
 
 /** Absolute path to the WordPress directory. */
 if (!defined('ABSPATH')) {
-    define('ABSPATH', $ROOT_PATH . '/wp/');
+    define('ABSPATH', __DIR__ . '/wp/');
 }
 
 /** Sets up WordPress vars and included files. */
